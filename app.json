@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "myTrello",
+    "slug": "myTrello",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "myTrello"
+}
