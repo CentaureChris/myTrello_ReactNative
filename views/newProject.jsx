@@ -8,6 +8,7 @@ import { ProjectsContext } from "../context";
 export function NewProject({ navigation }) {
     const [projectName, setProjectName] = useState("");
     const { user } = useContext(ProjectsContext);
+    
     function handleClick() {
         addProjects(user.uid, projectName).then(data => {
             navigation.push("DashBoard")

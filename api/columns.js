@@ -36,7 +36,7 @@ export function addColumn(uid, idProject,columnName) {
                 set(ref(database, `projects/${uid}/${idProject}/column`), data);
                 resolve(data)
             }).catch(err => {
-                console.log(err);
+                // console.log(err);
                 // const data = []
                 // data.push({ id: uuidv4(), nom: nomCarnet, photos: [] })
                 // set(ref(database, 'albums/' + uid), data);
