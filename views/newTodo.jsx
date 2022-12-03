@@ -6,27 +6,28 @@ import { ProjectsContext } from "../context";
 import RadioButtonRN from 'radio-buttons-react-native';
 
 
-export function NewTodo({}) {
+export function NewTodo({navigation}) {
     const [todoName, setTodoName] = useState("");
-    const { user, runningProject, runningColumn } = useContext(ProjectsContext);
+    const { user, runningProject, runningColumn, setRunningColumn } = useContext(ProjectsContext);
     const [datas,setDatas] = useState([])
     const [checkBoxValues,setCheckboxValues] = useState([])
 
     function handleClick() {
-        addTodo(user.uid, runningProject, todoName).then(data => {
-            navigation.goBack()
+        addTodo(user.uid, runningProject, runningColumn,todoName).then(data => {
+            // navigation.navigate("Todo")
         }).catch(err => {
             console.log(err);
         })
     }
 
-    // function testest(e){
-    //     let index = datas.map(object => object.id).indexOf(e.id)
-    //     console.log(datas)
-    // }
+    function test(e){
+        let index = checkBoxValues.map(object => object.value).indexOf(e.value)
+        setRunningColumn(index)
+    }
     
     useEffect(() => {
         getColumns(user.uid, runningProject).then(response => {
+            setDatas(response)
             setCheckboxValues(response.map((element,index) => ({label:element.name,value:index})))
         }).catch(err => {
             console.log(err)

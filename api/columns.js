@@ -28,7 +28,7 @@ export function addColumn(uid, idProject,columnName) {
     return new Promise((resolve, reject) => {
         try {
             const reference = ref(database);
-            get(child(reference, `projects/${uid}/${idProject}/`)).then((snapshot) => {
+            get(child(reference, `projects/${uid}/${idProject}/column`)).then((snapshot) => {
                 const data = snapshot.val() ?? []
                 console.log(data)
                 data.push({ id: uuidv4(), name: columnName, todos: [] })
@@ -69,13 +69,13 @@ export function addTodo(uid,idProject,idColumn,todosName){
     return new Promise((resolve, reject) => {
         try {
             const reference = ref(database);
-            get(child(reference, `/projects/${uid}/${idProject}}/${idColumn}/todos`)).then((snapshot) => {
+            get(child(reference, `/projects/${uid}/${idProject}/column/${idColumn}/todos`)).then((snapshot) => {
                 const data = snapshot.val() ?? []
                 console.log(data)
-                // data.push({ id: uuidv4(), name: columnName, todos: [] })
-                // console.log(data);
-                // set(ref(database, `projects/${uid}/${idProject}/column`), data);
-                // resolve(data)
+                data.push({ id: uuidv4(), name: todosName})
+                console.log(data);
+                set(ref(database, `projects/${uid}/${idProject}/column/${idColumn}/todos`), data);
+                resolve(data)
             }).catch(err => {
                 console.log(err);
                 // const data = []
