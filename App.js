@@ -1,37 +1,26 @@
 import React, { useState } from "react";
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { Login } from "./views/login";
-import { Register } from "./views/register";
-import { Board } from "./views/board";
-import { Project } from "./views/project";
+import { ProjectsContext } from "./context";
+import { ConnectRouter } from "./router/connectRouter";
+import { ProjectsRouter } from "./router/projectsRouter";
 
-
-const Stack = createStackNavigator();
-const Tab = createMaterialBottomTabNavigator();
-
-function TabNav(){
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Login" component={Login} />
-      <Tab.Screen name="Register" component={Register} />
-    </Tab.Navigator>  
-  );
-}
 
 export default function App() {
+  
+  const [user, setUser] = useState({});
+  const [runningProject, setRunningProject] = useState("");
+  const [runningColumn, setRunningColumn] = useState("");
 
   return (
-    <>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="TabNav" component={TabNav} />
-          <Stack.Screen name="Board" component={Board} />
-          <Stack.Screen name="Project" component={Project} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
-  );
+    <ProjectsContext.Provider 
+      value={
+        { 
+          user, setUser,
+          runningProject,setRunningProject,
+          runningColumn,setRunningColumn
+        }}>
+      {(user.email) ? <ProjectsRouter /> : <ConnectRouter />}
+    </ProjectsContext.Provider>
+
+  )
 }
 
