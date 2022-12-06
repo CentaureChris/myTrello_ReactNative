@@ -13,7 +13,6 @@ export const ProjectItem = ({ item, navigation, index }) => {
         setRunningProject(index)
     }
 
-
     return (
         <TouchableOpacity style={stylesBoard.item} onPress={() => handleClick()}>
             <View>

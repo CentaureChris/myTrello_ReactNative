@@ -12,10 +12,10 @@ const keyExtractor = (item, index) => index.toString()
 export function Project({navigation}) {
 
     const [columns, setColumns] = useState([])
-    const { user, runningProject } = useContext(ProjectsContext);
+    const { user, runningProject,setRunningColumn } = useContext(ProjectsContext);
 
     const renderItem = ({ item, index }) => (
-        <Columns item={item} index={index} />
+        <Columns item={item} index={index} navigation={navigation} />
     );
 
     useEffect(() => {

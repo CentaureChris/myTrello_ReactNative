@@ -16,6 +16,7 @@ export const stylesBoard = StyleSheet.create({
     title: {
         fontSize: 25,
         textDecorationLine: true,
+        justifyContent:"space-between"
     },
     logoutButton: {
         width: "20%",

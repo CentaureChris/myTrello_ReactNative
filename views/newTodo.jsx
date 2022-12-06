@@ -1,7 +1,8 @@
 import { Input, Button } from "@rneui/themed";
 import { useState, useContext, useEffect } from "react";
 import { StatusBar, View, Text } from "react-native";
-import { addTodo, getColumns } from "../api/columns";
+import { addTodo } from "../api/todo";
+import { getColumns } from "../api/columns"; 
 import { ProjectsContext } from "../context";
 import RadioButtonRN from 'radio-buttons-react-native';
 
