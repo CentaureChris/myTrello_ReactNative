@@ -46,3 +46,7 @@ export function addProjects(uid, projectName) {
         }
     })
 }
+
+export function deleteProject(uid, idProject){
+    set(ref(database, `projects/${uid}/${idProject}`), null)
+}

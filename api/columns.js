@@ -55,3 +55,7 @@ export function updateColumn(uid, idProject,idColumn,columnDatas,columnName){
     console.log(updateCol)
     update(ref(database, `projects/${uid}/${idProject}/column/${idColumn}`), updateCol);
 }
+
+export function deleteColumn(uid, idProject,idColumn,){
+    set(ref(database, `projects/${uid}/${idProject}/column/${idColumn}`), null)
+}

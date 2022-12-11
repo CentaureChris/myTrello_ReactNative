@@ -9,6 +9,7 @@ export default function App() {
   const [user, setUser] = useState({});
   const [runningProject, setRunningProject] = useState("");
   const [runningColumn, setRunningColumn] = useState("");
+  const [runningTodo, setRunningTodo] = useState("");
 
   return (
     <ProjectsContext.Provider 
@@ -16,7 +17,8 @@ export default function App() {
         { 
           user, setUser,
           runningProject,setRunningProject,
-          runningColumn,setRunningColumn
+          runningColumn,setRunningColumn,
+          runningTodo,setRunningTodo
         }}>
       {(user.email) ? <ProjectsRouter /> : <ConnectRouter />}
     </ProjectsContext.Provider>
